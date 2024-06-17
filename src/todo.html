@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css" />
+  </head>
+  <body>
+    <button class="open-modal-btn">Open Modal</button>
+
+    <div class="cards">
+    </div>
+
+    <div class="modal-container">
+      <div class="modal">
+        <form>
+          <div class="modal-header">
+            <h1>Hi 👋, I am a Modal</h1>
+
+            <div class="modal-close-btn">X</div>
+          </div>
+
+          <label for="title">Title</label>
+
+          <input id="title" name="title" />
+
+          <label for="descripiton">Description</label>
+
+          <textarea id="descripiton" name="descripiton" rows="4"></textarea>
+
+          <button type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="todo.js"></script>
+  </body>
+</html>

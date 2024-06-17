@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./login.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class="flex-all h-screen w-full bg-cover bg-center bg-[url(./comp/pexels-photo-417074.jpeg)]">
+      <div
+        style="width: 800px; height: 500px"
+        class="bg-white rounded-lg shadow-2xl shadow-black relative overflow-hidden">
+        <!-- white container -->
+        <div class="flex absolute">
+          <!-- white sign in -->
+          <div
+            style="width: 400px; height: 500px"
+            class="hide transition-all duration-1000 signI flex items-center justify-center flex-col translate-x-1/2 -z-10">
+            <div class="flex-all flex-col">
+              <h1 class="text-black font-bold text-5xl font-ben">Sign In</h1>
+              <div class="flex gap-4 mb-4 mt-6">
+                <ion-icon
+                  name="logo-instagram"
+                  class="border px-3 py-3 rounded-full cursor-pointer"></ion-icon>
+                <ion-icon
+                  name="logo-google"
+                  class="border px-3 py-3 rounded-full cursor-pointer"></ion-icon>
+                <ion-icon
+                  name="logo-tiktok"
+                  class="border px-3 py-3 rounded-full cursor-pointer"></ion-icon>
+              </div>
+              <p class="text-black text-center text-sm mb-2">
+                or use your account
+              </p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="relative flex-all">
+                <input
+                  type="text"
+                  id="username"
+                  class="px-4 w-72 h-10 border bg-gray-200 text-gray-700 peer"
+                  name="Name" />
+                <label
+                  for="username"
+                  class="input-text text-gray-500 text-sm px-4 absolute left-0 cursor-text peer-focus:hidden"
+                  >Name</label
+                >
+              </div>
+              <div class="relative flex-all">
+                <input
+                  type="password"
+                  id="password"
+                  class="px-4 w-72 h-10 border bg-gray-200 text-gray-700 peer"
+                  name="Password" />
+                <label
+                  for="password"
+                  class="input-text text-gray-500 text-sm px-4 absolute left-0 cursor-text peer-focus:hidden"
+                  >Password</label
+                >
+              </div>
+            </div>
+            <p class="text-black text-center text-sm mb-2 mt-6 cursor-pointer">
+              Forgot your password?
+            </p>
+            <button
+              class="transition py-2 px-12 hover:bg-cyan-600 hover:scale-95 bg-cyan-500 text-white border rounded-full border-white mt-2 font-ben">
+              SIGN IN
+            </button>
+          </div>
+          <!-- white sign up -->
+          <div
+            style="width: 400px; height: 500px"
+            class="hide transition-all duration-1000 signU flex items-center justify-center flex-col">
+            <div class="flex-all flex-col">
+              <h1 class="text-black font-bold text-5xl font-ben">Sign Up</h1>
+              <div class="flex gap-4 mb-4 mt-6">
+                <ion-icon
+                  name="logo-instagram"
+                  class="border px-3 py-3 rounded-full cursor-pointer bg-gradient-to-tr hover:from-yellow-300 hover:via-orange-600 hover:to-purple-700"></ion-icon>
+                <ion-icon
+                  name="logo-google"
+                  class="border px-3 py-3 rounded-full cursor-pointer hover:bg-cyan-300"></ion-icon>
+                <ion-icon
+                  name="logo-facebook"
+                  class="border px-3 py-3 rounded-full cursor-pointer hover:bg-black hover:text-cyan-500"></ion-icon>
+              </div>
+              <p class="text-black text-center text-sm mb-2">
+                or use your email for registration
+              </p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="relative flex-all">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  class="inpu px-4 w-72 h-10 border bg-gray-200 text-gray-700 peer"
+                  name="Name" />
+              </div>
+              <div class="relative flex-all">
+                <input
+                  type="text"
+                  placeholder="Email"
+                  class="px-4 w-72 h-10 border bg-gray-200 text-gray-700 peer"
+                  name="Email" />
+              </div>
+              <div class="relative flex-all">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  class="px-4 w-72 h-10 border bg-gray-200 text-gray-900 peer text-sm"
+                  name="Password" />
+              </div>
+            </div>
+            <button
+              class="transition py-2 px-12 hover:bg-cyan-600 hover:scale-95 bg-cyan-500 text-white border rounded-full border-white mt-2 font-ben"
+              onclick="alert('hello world ')">
+              SIGN UP
+            </button>
+          </div>
+        </div>
+        <!-- blue container -->
+        <div
+          style="width: 400px; height: 500px"
+          class="bg-black transition-all duration-500 absolute left overflow-hidden">
+          <!-- blue container in full -->
+          <div class="flex transition-all duration-500 right cards w-fit">
+            <!-- blue sign in -->
+            <div
+              style="width: 400px; height: 500px"
+              class="flex-all flex-col px-16 gap-8 bg-cyan-400 bg-opacity-90 font-ben">
+              <h1 class="text-white font-bold text-3xl">Welcome Back!</h1>
+              <p class="text-white text-sm">
+                Please login with your personal info
+              </p>
+              <button
+                class="animate-bounce signin hover:scale-95 transition py-2 px-12 hover:bg-white hover:text-cyan-500 text-white border rounded-full border-white">
+                SIGN IN
+              </button>
+            </div>
+            <!-- blue sign up -->
+            <div
+              style="width: 400px; height: 500px"
+              class="flex-all flex-col px-16 gap-8 bg-cyan-400 bg-opacity-90 font-ben">
+              <h1 class="text-white font-bold text-3xl">Hello, Benord!</h1>
+              <p class="text-white text-center text-sm">
+                Enter your personal details and start your journey with us
+              </p>
+              <button
+                class="animate-bounce signup scale-50 transition py-2 px-12 hover:bg-white hover:text-cyan-500 text-white border rounded-full border-white">
+                SIGN UP
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./loginForm.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
