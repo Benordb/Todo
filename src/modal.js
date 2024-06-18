@@ -61,6 +61,7 @@ const open = document.querySelector(".open-modal");
 const close = document.querySelector(".close-modal");
 const titleInput = document.querySelector("input");
 const descInput = document.querySelector("textarea");
+const count = document.querySelectorAll(".count");
 
 const [statusInput, priorityInput] = document.querySelectorAll("select");
 
@@ -76,14 +77,22 @@ close.addEventListener("click", () => {
 let data = [];
 let id = 0;
 
-const cardTemplate = (title, desc, id, priority) => {
+const cardTemplate = (title, desc, id, priority, checked) => {
   return `<div
               class="card flex bg-white rounded-lg px-4 py-2 justify-between">
-                          <div onclick="checkBox(${id})">bb</div>
+                          ${
+                            checked == true
+                              ? `<div
+                                onclick="checkBox(${id})"
+                                class="h-4 w-4 rounded-full bg-green-300"></div>`
+                              : `<div
+                                onclick="checkBox(${id})"
+                                class="h-4 w-4 rounded-full bg-red-300"></div>`
+                          }
               <div class="w-56">
                 <h1 class="text-xl">${title}</h1>
                 <p class="text-sm text-slate-500">${desc}</p>
-                <p class="text-sm">${priority}</p>
+                <p class="text-sm">${priority}</p>  
               </div>
 
               <div class="flex flex-col gap-2 py-2">
@@ -107,52 +116,59 @@ const render = () => {
   cardsInput.forEach((cards) => {
     cards.innerHTML = "";
   });
+  count.forEach((co) => {
+    co.innerHTML = "0";
+  });
   data.forEach((item) => {
     if (item.status == "toDo") {
+      count[0].innerHTML++;
       cardsInput[0].innerHTML += cardTemplate(
         item.title,
         item.desc,
         item.id,
-        item.priority
+        item.priority,
+        item.checked
       );
     } else if (item.status == "inProgress") {
+      count[1].innerHTML++;
       cardsInput[1].innerHTML += cardTemplate(
         item.title,
         item.desc,
         item.id,
-        item.priority
+        item.priority,
+        item.checked
       );
     } else if (item.status == "done") {
+      count[2].innerHTML++;
+      item.checked = true;
       cardsInput[2].innerHTML += cardTemplate(
         item.title,
         item.desc,
         item.id,
-        item.priority
+        item.priority,
+        item.checked
       );
     } else {
+      count[3].innerHTML++;
       cardsInput[3].innerHTML += cardTemplate(
         item.title,
         item.desc,
         item.id,
-        item.priority
+        item.priority,
+        item.checked
       );
     }
   });
 };
-// const swap = (a, b) => {
-//   let temp = a;
-//   a = b;
-//   b = temp;
-//   return a, b;
-// };
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const title = titleInput.value;
   const desc = descInput.value;
   const priority = priorityInput.value;
   const status = statusInput.value;
+  const oldStatus = statusInput.value;
 
-  const checked = false;
+  let checked = false;
 
   let priorityIndex = priorityInput.selectedIndex;
 
@@ -163,12 +179,12 @@ form.addEventListener("submit", (event) => {
       title,
       desc,
       status,
+      oldStatus,
       checked,
       priority,
       priorityIndex,
     },
   ];
-  console.log(newData);
   const sortedPriData = sortPriority(newData);
   setData(sortedPriData);
   id++;
@@ -191,17 +207,13 @@ const editCard = (id) => {
 };
 const checkBox = (id) => {
   const newData = [...data].filter((item) => {
-    const statusS = item.status;
-    console.log(statusS);
     if (item.id == id) {
       if (item.checked == false) {
-        checked = true;
+        item.checked = true;
         item.status = "done";
-        return true;
       } else {
-        checked = false;
-        item.status = statusS;
-        return false;
+        item.checked = false;
+        item.status = item.oldStatus;
       }
     }
     return true;
