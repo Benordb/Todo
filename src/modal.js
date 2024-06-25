@@ -76,29 +76,29 @@ close.addEventListener("click", () => {
 });
 let data = [];
 let id = 0;
-
+let deleted = 1;
 const cardTemplate = (title, desc, id, priority, checked) => {
   return `<div
-              class="card flex bg-white rounded-lg px-4 py-2 justify-between">
+              class="card flex bg-zinc-800 rounded-lg px-4 py-2 justify-between items-center">
                           ${
                             checked == true
                               ? `<div
                                 onclick="checkBox(${id})"
-                                class="h-4 w-4 rounded-full bg-green-300"></div>`
+                                class="h-4 w-4 bg-cyan-500 rounded-full"></div>`
                               : `<div
                                 onclick="checkBox(${id})"
-                                class="h-4 w-4 rounded-full bg-red-300"></div>`
+                                class="h-4 w-4 border-2 border-neutral-400 rounded-full"></div>`
                           }
-              <div class="w-56">
-                <h1 class="text-xl">${title}</h1>
-                <p class="text-sm text-slate-500">${desc}</p>
-                <p class="text-sm">${priority}</p>  
+              <div class="w-44">
+                <h1 class="text-lg text-neutral-200">${title}</h1>
+                <p class="text-xs text-neutral-400">${desc}</p>
+                <p class="text-sm text-neutral-600">${priority}</p>  
               </div>
 
-              <div class="flex flex-col gap-2 py-2">
+              <div class="flex gap-2 py-2">
                 <ion-icon
                 onclick="editCard(${id})"
-                  class="text-green-500 hover:text-green-600 text-xl"
+                  class="text-neutral-400 hover:text-neutral-200 text-xl"
                   name="build-outline"></ion-icon>
                 <ion-icon
                   onclick="deleteCard(${id})"
@@ -106,6 +106,35 @@ const cardTemplate = (title, desc, id, priority, checked) => {
                   name="trash-outline"></ion-icon>
               </div>
             </div>`;
+};
+const cardDefualtTemplate = (id, checked) => {
+  return `<div
+              class="card flex bg-zinc-800 rounded-lg px-4 py-2 justify-between items-center">
+                          ${
+                            checked == true
+                              ? `<div
+                                onclick="checkBox(${id})"
+                                class="h-4 w-4 bg-cyan-500 rounded-full"></div>`
+                              : `<div
+                                onclick="checkBox(${id})"
+                                class="h-4 w-4 border-2 border-neutral-400 rounded-full"></div>`
+                          }
+              <div class="w-44">
+                <p class="text-sm text-neutral-400">[loan-managament] - Add card component</p>
+              </div>
+
+              <div class="flex gap-2 py-2">
+                <ion-icon
+                onclick="editCard(${id})"
+                  class="text-neutral-400 hover:text-neutral-200 text-xl"
+                  name="build-outline"></ion-icon>
+                <ion-icon
+                  onclick="deleteTempCard(${id})"
+                  class="hover:text-red-800 text-red-600 text-xl"
+                  name="trash-outline"></ion-icon>
+              </div>
+            </div>
+  `;
 };
 const setData = (arr) => {
   data = arr;
@@ -159,6 +188,16 @@ const render = () => {
       );
     }
   });
+  cardsInput.forEach((cards, index) => {
+    deleted.forEach((item)=>{
+      
+    })
+    if (cards.innerHTML == "" && deleted !== index) {
+      index == 2
+        ? (cards.innerHTML = cardDefualtTemplate(2, true))
+        : (cards.innerHTML = cardDefualtTemplate(2, false));
+    }
+  });
 };
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -198,6 +237,10 @@ const sortPriority = (data) => {
 const deleteCard = (id) => {
   const newData = [...data].filter((item) => item.id !== id);
   setData(newData);
+};
+const deleteTempCard = (id) => {
+  cardsInput[id].innerHTML = "";
+  deleted.push(id);
 };
 const editCard = (id) => {
   modal.classList.remove("invisible");
