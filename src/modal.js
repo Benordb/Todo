@@ -80,15 +80,14 @@ let deleted = 1;
 const cardTemplate = (title, desc, id, priority, checked) => {
   return `<div
               class="card flex bg-zinc-800 rounded-lg px-4 py-2 justify-between items-center">
-                          ${
-                            checked == true
-                              ? `<div
+                          ${checked == true
+      ? `<div
                                 onclick="checkBox(${id})"
                                 class="h-4 w-4 bg-cyan-500 rounded-full"></div>`
-                              : `<div
+      : `<div
                                 onclick="checkBox(${id})"
                                 class="h-4 w-4 border-2 border-neutral-400 rounded-full"></div>`
-                          }
+    }
               <div class="w-44">
                 <h1 class="text-lg text-neutral-200">${title}</h1>
                 <p class="text-xs text-neutral-400">${desc}</p>
@@ -110,15 +109,14 @@ const cardTemplate = (title, desc, id, priority, checked) => {
 const cardDefualtTemplate = (id, checked) => {
   return `<div
               class="card flex bg-zinc-800 rounded-lg px-4 py-2 justify-between items-center">
-                          ${
-                            checked == true
-                              ? `<div
+                          ${checked == true
+      ? `<div
                                 onclick="checkBox(${id})"
                                 class="h-4 w-4 bg-cyan-500 rounded-full"></div>`
-                              : `<div
+      : `<div
                                 onclick="checkBox(${id})"
                                 class="h-4 w-4 border-2 border-neutral-400 rounded-full"></div>`
-                          }
+    }
               <div class="w-44">
                 <p class="text-sm text-neutral-400">[loan-managament] - Add card component</p>
               </div>
@@ -189,8 +187,8 @@ const render = () => {
     }
   });
   cardsInput.forEach((cards, index) => {
-    deleted.forEach((item)=>{
-      
+    deleted.forEach((item) => {
+
     })
     if (cards.innerHTML == "" && deleted !== index) {
       index == 2
